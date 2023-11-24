@@ -13,5 +13,39 @@ plugins:
   - serverless-webpack
 
 functions:
-  function1:
-    handler: index.handler
+  createUser:
+    handler: functions/user/createUser
+    events:
+      -httpApi:
+        path: '/api/user/signup'
+        method: POST
+  login:
+    handler: functions/user/login
+    events:
+      -httpApi:
+        path: '/api/user/login'
+        method: POST
+  getNotes:
+    handler: functions/notes/get
+    events:
+      -httpApi:
+        path: '/api/notes'
+        method: GET
+  createNotes:
+    handler: functions/notes/create
+    events:
+      -httpApi:
+        path: '/api/notes'
+        method: POST
+  updateNotes:
+    handler: functions/notes/update
+    events:
+      -httpApi:
+        path: '/api/notes'
+        method: PUT
+  getNotes:
+    handler: functions/notes/delete
+    events:
+      -httpApi:
+        path: '/api/notes'
+        method: DELETE
