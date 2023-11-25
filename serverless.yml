@@ -21,38 +21,38 @@ functions:
     handler: functions/user/createUser/index.handler
     events:
       - httpApi:
-        path: '/api/user/signup'
-        method: POST
+          path: '/api/user/signup'
+          method: POST
   login:
     handler: functions/user/login/index.handler
     events:
       - httpApi:
-        path: '/api/user/login'
-        method: POST
+          path: '/api/user/login'
+          method: POST
   getNotes:
     handler: functions/notes/get/index.handler
     events:
       - httpApi:
-        path: '/api/notes'
-        method: GET
+          path: '/api/notes'
+          method: GET
   createNotes:
     handler: functions/notes/create/index.handler
     events:
       - httpApi:
-        path: '/api/notes'
-        method: POST
+          path: '/api/notes'
+          method: POST
   updateNotes:
     handler: functions/notes/update/index.handler
     events:
       - httpApi:
-        path: '/api/notes'
-        method: PUT
+          path: '/api/notes'
+          method: PUT
   deleteNotes:
     handler: functions/notes/delete/index.handler
     events:
       - httpApi:
-        path: '/api/notes'
-        method: DELETE
+          path: '/api/notes'
+          method: DELETE
 
 resources:
   Resources:

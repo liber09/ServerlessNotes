@@ -1,5 +1,5 @@
 const { sendResponse } = require("../../../responses")
-const bycrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 const { nanoid } = require("nanoid");
 const AWS = require('aws-sdk');
 const db = new AWS.DynamoDB.DocumentClient();
@@ -35,7 +35,7 @@ async function signUp(userName, password, firstName, lastName) {
     console.log(hashedPassword);
     const userId = nanoid();
   
-    const result = await createAccount(
+    const result = await createUser(
       userName,
       hashedPassword,
       userId,
@@ -46,9 +46,9 @@ async function signUp(userName, password, firstName, lastName) {
   }
   
   exports.handler = async (event, context) => {
-    const { username, password, firstName, lastName } = JSON.parse(event.body);
+    const { userName, password, firstName, lastName } = JSON.parse(event.body);
   
-    const result = await signUp(username, password, firstName, lastName);
+    const signUpResult = await signUp(userName, password, firstName, lastName);
   
-    return sendResponse(result.success ? 200: 400, result);
+    return sendResponse(signUpResult.success ? 200: 400, signUpResult);
   };
