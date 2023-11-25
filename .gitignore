@@ -9,3 +9,4 @@ jspm_packages
 *.env
 
 .DS_Store
+config.js
