@@ -1,9 +1,9 @@
-const { sendResponse } = require("../../../responses")
+const { sendResponse } = require("../../../responses");
 const bcrypt = require("bcryptjs");
 const AWS = require("aws-sdk");
 const db = new AWS.DynamoDB.DocumentClient();
 const jwt = require("jsonwebtoken");
-const { jwtSecret } = require("../../../config")
+const { jwtSecret } = require("../../../config");
 
 async function getUser(userName) {
   try {
