@@ -17,20 +17,20 @@ const createNote = async (event, context) => {
     }
 
     const date = new Date().toISOString();
-    note.id = nanoid();
+    note.noteId = nanoid();
     note.createdAt = `${date}`
     note.modifiedAt = ""
     note.isDeleted = false
 
     try{
         await db.put({
-            TableName: 'notes',
+            TableName: 'notesDb',
             Item: note
         }).promise();
         return sendResponse(200, {
-            success: false, 
+            success: true, 
             message: 'Successfully saved note',
-            noteId: note.id}) 
+            noteId: note.noteId}) 
     }catch(error){
         console.error(error);
     }
@@ -54,7 +54,7 @@ async function validateNote(note){
         return "You need to provide content in your note";
     }
 
-    if (note.text.length > 500){
+    if (note.text.length > 300){
         return "Your note is too long, split up on several notes. Max 500 chars.";
     }
 }
