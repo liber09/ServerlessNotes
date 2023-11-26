@@ -5,13 +5,14 @@ const { validateToken } = require('../../middleware/auth');
 const middy = require('@middy/core');
 
 const getNotes = async (event, context) => {
-    if (event?.error && event?.error === '401')
+    if (event?.error && event?.error === '401'){
         return sendResponse(401, { success: false, message: 'invalid token' });
-
-        const userName = event.queryStringParameters && event.queryStringParameters.userName;
-        if (!userName) {
-            return sendResponse(400, { success: false, message: 'userName parameter is missing in the query string' });
-        } 
+    }
+        
+    const userName = event.queryStringParameters && event.queryStringParameters.userName;
+    if (!userName) {
+        return sendResponse(400, { success: false, message: 'userName parameter is missing in the query string' });
+    } 
 
     const params = {
         TableName: 'notesDb',
