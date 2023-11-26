@@ -63,10 +63,19 @@ resources:
         AttributeDefinitions:
           - AttributeName: noteId
             AttributeType: S
+          - AttributeName: userName
+            AttributeType: S
         KeySchema:
           - AttributeName: noteId
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
+        GlobalSecondaryIndexes:
+          - IndexName: UserNameIndex
+            KeySchema:
+              - AttributeName: userName
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL  # Adjust as needed
 
     usersDb:
       Type: AWS::DynamoDB::Table
