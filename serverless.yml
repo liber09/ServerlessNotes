@@ -53,6 +53,23 @@ functions:
       - httpApi:
           path: '/api/notes'
           method: DELETE
+  trash:
+    handler: functions/notes/trash/index.handler
+    events:
+      - httpApi:
+          path: '/api/trash'
+          method: GET
+  restore:
+    handler: functions/notes/restore/index.handler
+    events:
+      - httpApi:
+          path: '/api/trash'
+          method: PATCH
+
+  autoDelete:
+    handler: functions/notes/autoDelete/index.handler
+    events:
+      - schedule: rate(1 day) # Trigger the Lambda function daily
 
 resources:
   Resources:
