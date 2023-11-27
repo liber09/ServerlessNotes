@@ -33,8 +33,7 @@ const deleteNote = async(event,context)=>{
             return sendResponse(403, { success: false, message: "You can only delete your own notes!" });
         }
 
-        const date = new Date().toISOString();
-        const modifiedAt = date;
+        const modifiedAt = new Date().toISOString();
 
         await db.update({
             TableName: 'notesDb',
