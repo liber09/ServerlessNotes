@@ -13,3 +13,7 @@
 | `/api/notes/archive` | `PATCH` | Archive note |
 | `/api/trash` | `PATCH` | Restore note from trash |
 | `/api/trash` | `GET` | Get trashed notes for signed in user |
+
+## Todo
+
+-Write function that traverse all notes that is marked for delete and auto delete if more than 30 days has passed since marked for delete.
